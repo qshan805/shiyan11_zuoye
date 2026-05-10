@@ -2,15 +2,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Student {
-    public int id;
-    public String name;
-    public int age;
-    public Student(int i, String n, int a) { id = i; name = n; age = a; }
+    private int id;
+    private String name;
+    private int age;
+
+    public Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
 
 public class Main {
-    static ArrayList<Student> studentList = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    private static ArrayList<Student> studentList = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
@@ -36,7 +65,7 @@ public class Main {
         int studentAge = scanner.nextInt();
         scanner.nextLine();
         for (int index = 0; index < studentList.size(); index++) {
-            if (studentList.get(index).id == studentId) {
+            if (studentList.get(index).getId() == studentId) {
                 System.out.println("id重复");
                 return;
             }
@@ -51,7 +80,7 @@ public class Main {
         scanner.nextLine();
         boolean found = false;
         for (int index = 0; index < studentList.size(); index++) {
-            if (studentList.get(index).id == studentId) {
+            if (studentList.get(index).getId() == studentId) {
                 studentList.remove(index);
                 found = true;
                 break;
@@ -66,14 +95,14 @@ public class Main {
         int studentId = scanner.nextInt();
         scanner.nextLine();
         for (int index = 0; index < studentList.size(); index++) {
-            if (studentList.get(index).id == studentId) {
+            if (studentList.get(index).getId() == studentId) {
                 System.out.println("输新名字:");
                 String newName = scanner.nextLine();
                 System.out.println("输新年龄:");
                 int newAge = scanner.nextInt();
                 scanner.nextLine();
-                studentList.get(index).name = newName;
-                studentList.get(index).age = newAge;
+                studentList.get(index).setName(newName);
+                studentList.get(index).setAge(newAge);
                 System.out.println("改好了");
                 return;
             }
@@ -88,15 +117,15 @@ public class Main {
         if (choice == 1) {
             for (int index = 0; index < studentList.size(); index++) {
                 Student student = studentList.get(index);
-                System.out.println("id:" + student.id + " 名字:" + student.name + " 年龄:" + student.age);
+                System.out.println("id:" + student.getId() + " 名字:" + student.getName() + " 年龄:" + student.getAge());
             }
         } else if (choice == 2) {
             System.out.println("输id:");
             int studentId = scanner.nextInt();
             scanner.nextLine();
             for (int index = 0; index < studentList.size(); index++) {
-                if (studentList.get(index).id == studentId) {
-                    System.out.println("id:" + studentList.get(index).id + " 名字:" + studentList.get(index).name + " 年龄:" + studentList.get(index).age);
+                if (studentList.get(index).getId() == studentId) {
+                    System.out.println("id:" + studentList.get(index).getId() + " 名字:" + studentList.get(index).getName() + " 年龄:" + studentList.get(index).getAge());
                     return;
                 }
             }
